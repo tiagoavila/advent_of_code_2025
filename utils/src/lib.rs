@@ -6,8 +6,9 @@ use std::path::PathBuf;
 pub fn read_input(day: u8) -> String {
     let mut path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     path.pop(); // Go up to workspace root
+    path.push("inputs");
     path.push(format!("day{:02}", day));
-    path.push("input.txt");
+    path.push("challenge.txt");
 
     fs::read_to_string(&path).unwrap_or_else(|_| panic!("Failed to read input file: {:?}", path))
 }
@@ -15,6 +16,7 @@ pub fn read_input(day: u8) -> String {
 pub fn read_test_input(day: u8) -> String {
     let mut path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     path.pop(); // Go up to workspace root
+    path.push("inputs");
     path.push(format!("day{:02}", day));
     path.push("test.txt");
     fs::read_to_string(&path).unwrap_or_else(|_| panic!("Failed to read test input file: {:?}", path))
